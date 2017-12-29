@@ -1,4 +1,4 @@
-import * as SHA256 from "crypto-js/sha256";
+import  SHA256 = require("crypto-js/sha256");
 class Block{
 
     public index:string;

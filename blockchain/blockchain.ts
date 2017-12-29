@@ -1,8 +1,9 @@
 import Block = require('../block/block');
+
 class Blockchain{
 
     private chain:Array<Block>;
-    private difficulty:number;
+    public difficulty:number;
 
     constructor(){
         this.chain = [ this.initialize() ];
@@ -29,6 +30,9 @@ class Blockchain{
         for(let i=1;i<this.chain.length;i++){
             const currentBlock = this.chain[i];
             const previousBlock = this.chain[i-1];
+            if (previousBlock.index + 1 !== currentBlock.index) {
+                return false;
+            }
             if(currentBlock.hash !== currentBlock.calculateHash()){
                 return false;
             }
